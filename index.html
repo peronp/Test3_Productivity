@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Focus Timer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="app" id="app">
+    <h1 class="title">Focus Timer</h1>
+
+    <div class="mode-tabs">
+      <button class="tab active" data-mode="focus">Focus</button>
+      <button class="tab" data-mode="short">Short Break</button>
+      <button class="tab" data-mode="long">Long Break</button>
+    </div>
+
+    <div class="timer-ring">
+      <svg viewBox="0 0 200 200">
+        <circle class="ring-bg" cx="100" cy="100" r="88" />
+        <circle class="ring-progress" id="ring" cx="100" cy="100" r="88" />
+      </svg>
+      <div class="timer-display" id="display">25:00</div>
+    </div>
+
+    <div class="controls">
+      <button class="btn-icon" id="resetBtn" title="Reset">&#8635;</button>
+      <button class="btn-main" id="startBtn">Start</button>
+      <button class="btn-icon" id="settingsBtn" title="Settings">&#9881;</button>
+    </div>
+
+    <div class="session-count">
+      Session <span id="sessionNum">1</span> &nbsp;·&nbsp;
+      <span id="completedCount">0</span> completed today
+    </div>
+
+    <!-- Settings panel -->
+    <div class="settings-panel hidden" id="settings">
+      <h2>Settings</h2>
+      <label>Focus <input type="number" id="setFocus" min="1" max="99" value="25" /> min</label>
+      <label>Short Break <input type="number" id="setShort" min="1" max="30" value="5" /> min</label>
+      <label>Long Break <input type="number" id="setLong" min="1" max="60" value="15" /> min</label>
+      <button class="btn-save" id="saveSettings">Save</button>
+    </div>
+  </div>
+
+  <script src="timer.js"></script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --focus-color: #e05c5c;
+  --short-color: #4caf92;
+  --long-color: #5b8dd9;
+  --bg: #1a1a2e;
+  --surface: #16213e;
+  --text: #eaeaea;
+  --muted: #888;
+  --accent: var(--focus-color);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.app {
+  text-align: center;
+  width: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+.title {
+  font-size: 1.1rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* Mode tabs */
+.mode-tabs {
+  display: flex;
+  gap: 8px;
+  background: var(--surface);
+  border-radius: 999px;
+  padding: 4px;
+}
+
+.tab {
+  background: none;
+  border: none;
+  color: var(--muted);
+  padding: 6px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.tab.active {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Ring timer */
+.timer-ring {
+  position: relative;
+  width: 220px;
+  height: 220px;
+}
+
+.timer-ring svg {
+  transform: rotate(-90deg);
+  width: 100%;
+  height: 100%;
+}
+
+.ring-bg {
+  fill: none;
+  stroke: var(--surface);
+  stroke-width: 10;
+}
+
+.ring-progress {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 10;
+  stroke-linecap: round;
+  stroke-dasharray: 553;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1s linear, stroke 0.4s;
+}
+
+.timer-display {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.2rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.btn-main {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 14px 44px;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.1s;
+}
+
+.btn-main:hover { opacity: 0.88; }
+.btn-main:active { transform: scale(0.97); }
+
+.btn-icon {
+  background: var(--surface);
+  color: var(--muted);
+  border: none;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s;
+}
+
+.btn-icon:hover { color: var(--text); background: #2a2a4a; }
+
+.session-count {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+/* Settings panel */
+.settings-panel {
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 24px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.settings-panel h2 {
+  font-size: 0.95rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.settings-panel label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.settings-panel input {
+  background: var(--bg);
+  border: 1px solid #333;
+  color: var(--text);
+  border-radius: 8px;
+  padding: 6px 10px;
+  width: 64px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.btn-save {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.btn-save:hover { opacity: 0.85; }
+
+.hidden { display: none !important; }
+
+/* Flash animation on completion */
+@keyframes flash {
+  0%, 100% { background: var(--bg); }
+  50% { background: var(--accent); }
+}
+
+.flash { animation: flash 0.4s ease 3; }
