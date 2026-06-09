@@ -146,9 +146,14 @@ document.getElementById('saveSettings').addEventListener('click', () => {
   const f = parseInt(document.getElementById('setFocus').value, 10);
   const s = parseInt(document.getElementById('setShort').value, 10);
   const l = parseInt(document.getElementById('setLong').value, 10);
-  if (f > 0) MODES.focus.minutes = f;
-  if (s > 0) MODES.short.minutes = s;
-  if (l > 0) MODES.long.minutes  = l;
+  if (!f || !s || !l) {
+    document.getElementById('settingsError').textContent = 'All values must be greater than 0.';
+    return;
+  }
+  document.getElementById('settingsError').textContent = '';
+  MODES.focus.minutes = f;
+  MODES.short.minutes = s;
+  MODES.long.minutes  = l;
   settingsPanel.classList.add('hidden');
   switchMode(mode); // reload with new duration
 });
